@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CarTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-10-21T08:20:28" hostname="GDA303-09" time="0.019">
+  <properties/>
+  <testcase name="carDoesntTurnsOnWhenItHasBatteryAndNoFuel()" classname="CarTest" time="0.012"/>
+  <testcase name="carDoesntTurnsOnWhenItHasNoBatteryAndFuel()" classname="CarTest" time="0.001"/>
+  <testcase name="carDoesntTurnsOnWhenItHasNoBatteryAndNoFuel()" classname="CarTest" time="0.001"/>
+  <testcase name="carHasMoreFuelWhenReffuled()" classname="CarTest" time="0.001"/>
+  <testcase name="carTurnsOnWhenItHasBatteryAndFuel()" classname="CarTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
