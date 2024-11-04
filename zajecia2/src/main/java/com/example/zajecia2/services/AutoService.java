@@ -1,9 +1,12 @@
 package com.example.zajecia2.services;
 
 import com.example.zajecia2.controllers.MyRestController;
+import com.example.zajecia2.exceptions.CarAlreadyExistsException;
+import com.example.zajecia2.exceptions.NotFoundException;
 import com.example.zajecia2.model.Auto;
 import com.example.zajecia2.repository.AutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -35,9 +38,10 @@ public class AutoService{
 
     }
 
-    public Optional<Auto> getById(Long id){
-        return this.repository.findById(id);
-    }
+//    public Optional<Auto> getById(Long id){
+//        return this.repository.findById(id);
+//    }
+
 
     public List<Auto> getByModel(String model){
         return this.repository.findByModel(model);
@@ -57,10 +61,11 @@ public class AutoService{
         this.repository.deleteAll(auto);
     }
 
-    public void add(Auto auto){
-        this.repository.save(new Auto(auto.getModel(), auto.getRokProdukcji()));
-
-    }
+//    public void add(Auto auto){
+//        auto.setIdentyfikator();//potrzebne do testu ID
+//        this.repository.save(new Auto(auto.getModel(), auto.getRokProdukcji()));
+//
+//    }
 
     //zajecia5
     public void addupper(Auto auto){
@@ -97,6 +102,32 @@ public class AutoService{
         }
 
     }
+
+    //zajecia6
+
+    public Optional<Auto> getById(Long id){
+        Optional<Auto> auto = this.repository.findById(id);
+        if(auto.isEmpty()){
+            throw new NotFoundException();
+        }
+        else{
+            return Optional.of(auto.get());
+        }
+
+    }
+
+    public void add(Auto auto){
+        auto.setIdentyfikator();//potrzebne do testu ID
+        List<Auto> autoZIdentyfikatorem = this.repository.findByIdentyfikator(auto.getIdentyfikator());
+        if(autoZIdentyfikatorem.isEmpty()){
+            this.repository.save(auto);
+        } else {
+            throw new CarAlreadyExistsException();
+        }
+
+
+    }
+
 
 
 
