@@ -1,8 +1,7 @@
 package com.example.zajecia2.services;
 
 import com.example.zajecia2.controllers.MyRestController;
-import com.example.zajecia2.exceptions.CarAlreadyExistsException;
-import com.example.zajecia2.exceptions.NotFoundException;
+import com.example.zajecia2.exceptions.*;
 import com.example.zajecia2.model.Auto;
 import com.example.zajecia2.repository.AutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +124,70 @@ public class AutoService{
             throw new CarAlreadyExistsException();
         }
 
+    }
+
+    public void DeleteAuto(String model){
+//        List<Auto> a = this.repository.findByModel(model); to usuwalo tylko jedna toyote
+
+        //to usuwa np wszytskie toyoty z repozytorium
+        List<Auto> auto=  this.repository.findAll().stream().filter(a->a.getModel().equalsIgnoreCase(model)).collect(Collectors.toList());
+        if(auto.isEmpty()){
+            throw new CantDeleteAuto_NotFoundException();
+        }
+        this.repository.deleteAll(auto);
+    }
+
+    public void Update(Auto auto){
+        Long id = auto.getId();
+        String model = auto.getModel();
+        int rokProdukcji = auto.getRokProdukcji();
+        Optional<Auto> car = this.repository.findById(id);
+        if(car.isPresent()){
+            Auto noweAuto = car.get();
+            noweAuto.setModel(model);
+            noweAuto.setRokProdukcji(rokProdukcji);
+            noweAuto.setIdentyfikator();
+            this.repository.save(noweAuto);
+        }
+        else{
+            throw new CantUpdateAuto_NotFoundException();
+        }
+
+    }
+
+    public void Add(Auto auto){
+        if(auto.getModel()==null || auto.getModel().isEmpty()){
+            throw new CantAddAuto_IncorrectData("nie ma podanego modelu");
+        }
+
+        else if(auto.getRokProdukcji()==0){
+            throw new CantAddAuto_IncorrectData("nie ma roku produkcji!");
+        }
+
+            else{
+                auto.setIdentyfikator();
+                this.repository.save(auto);
+
+            }
+        }
+
+//    zajecia7
+
+    public Auto findById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Object with ID " + id + " not found"));
+    }
+
+//    public Auto findById(Long id) {
+//        Optional<Auto> optionalAuto = repository.findById(id);
+//        if (optionalAuto.isPresent()) {
+//            return optionalAuto.get();
+//        } else {
+//            throw new IllegalArgumentException("Auto with ID " + id + " not found");
+//        }
+//    }
+
+
 
     }
 
@@ -132,7 +195,7 @@ public class AutoService{
 
 
 
-}
+
 
 
 
