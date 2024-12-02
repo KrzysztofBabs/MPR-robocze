@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.zajecia2.TestMyCarService" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-11-18T09:45:12" hostname="GDA303-12" time="1.007">
+<testsuite name="com.example.zajecia2.TestMyCarService" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-12-02T08:39:34" hostname="GDA303-12" time="1.204">
   <properties/>
-  <testcase name="testUpdateAuto_whenAutoExists()" classname="com.example.zajecia2.TestMyCarService" time="1.007">
-    <failure message="org.mockito.exceptions.verification.TooManyActualInvocations: &#10;autoRepository.save(&#10;    &lt;any com.example.zajecia2.model.Auto&gt;&#10;);&#10;Wanted 1 time:&#10;-&gt; at com.example.zajecia2.TestMyCarService.testUpdateAuto_whenAutoExists(TestMyCarService.java:112)&#10;But was 3 times:&#10;-&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:33)&#10;-&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:34)&#10;-&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:35)&#10;&#10;" type="org.mockito.exceptions.verification.TooManyActualInvocations">org.mockito.exceptions.verification.TooManyActualInvocations: 
+  <testcase name="testUpdateAuto_whenAutoExists()" classname="com.example.zajecia2.TestMyCarService" time="1.204">
+    <failure message="org.mockito.exceptions.verification.TooManyActualInvocations: &#10;autoRepository.save(&#10;    &lt;any com.example.zajecia2.model.Auto&gt;&#10;);&#10;Wanted 1 time:&#10;-&gt; at com.example.zajecia2.TestMyCarService.testUpdateAuto_whenAutoExists(TestMyCarService.java:114)&#10;But was 3 times:&#10;-&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:33)&#10;-&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:34)&#10;-&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:35)&#10;&#10;" type="org.mockito.exceptions.verification.TooManyActualInvocations">org.mockito.exceptions.verification.TooManyActualInvocations: 
 autoRepository.save(
     &lt;any com.example.zajecia2.model.Auto&gt;
 );
 Wanted 1 time:
--&gt; at com.example.zajecia2.TestMyCarService.testUpdateAuto_whenAutoExists(TestMyCarService.java:112)
+-&gt; at com.example.zajecia2.TestMyCarService.testUpdateAuto_whenAutoExists(TestMyCarService.java:114)
 But was 3 times:
 -&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:33)
 -&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:34)
 -&gt; at com.example.zajecia2.services.AutoService.&lt;init&gt;(AutoService.java:35)
 
 
-	at app//com.example.zajecia2.TestMyCarService.testUpdateAuto_whenAutoExists(TestMyCarService.java:112)
+	at app//com.example.zajecia2.TestMyCarService.testUpdateAuto_whenAutoExists(TestMyCarService.java:114)
 	at java.base@21.0.4/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base@21.0.4/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base@21.0.4/java.util.ArrayList.forEach(ArrayList.java:1596)
